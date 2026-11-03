@@ -33,6 +33,24 @@ MainWindow::MainWindow(QWidget *parent)
                                     SIGNAL(valueChanged(int)), this->trem_f,
                                     SLOT(updateSpeed(int)));
 
+        this->ui->slider_m->connect(this->ui->slider_m,
+                                    SIGNAL(valueChanged(int)),
+                                    this->ui->slider_a, SLOT(setValue(int)));
+        this->ui->slider_m->connect(this->ui->slider_m,
+                                    SIGNAL(valueChanged(int)),
+                                    this->ui->slider_b, SLOT(setValue(int)));
+        this->ui->slider_m->connect(this->ui->slider_m,
+                                    SIGNAL(valueChanged(int)),
+                                    this->ui->slider_c, SLOT(setValue(int)));
+        this->ui->slider_m->connect(this->ui->slider_m,
+                                    SIGNAL(valueChanged(int)),
+                                    this->ui->slider_d, SLOT(setValue(int)));
+        this->ui->slider_m->connect(this->ui->slider_m,
+                                    SIGNAL(valueChanged(int)),
+                                    this->ui->slider_e, SLOT(setValue(int)));
+        this->ui->slider_m->connect(this->ui->slider_m,
+                                    SIGNAL(valueChanged(int)),
+                                    this->ui->slider_f, SLOT(setValue(int)));
 
         /*
          * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
