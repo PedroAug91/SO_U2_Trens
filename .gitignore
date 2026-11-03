@@ -1,3 +1,6 @@
 *.o
-/Trem
+Trem
 compile_commands.json
+moc_*.cpp
+.qmake.stash
+ui_mainwindow.h
