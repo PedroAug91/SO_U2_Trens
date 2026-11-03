@@ -6,10 +6,14 @@ MainWindow::MainWindow(QWidget *parent)
         ui->setupUi(this);
 
         // Cria o trem com seu (ID, posição X, posição Y)
-        trem1 = new Trem(1, 60, 30);
-        trem2 = new Trem(2, 330, 30);
+        trem_a = new Trem(1, 420, 140);
+        trem_b = new Trem(2, 150, 330);
+        trem_c = new Trem(3, 690, 330);
+        trem_d = new Trem(4, 20, 460);
+        trem_e = new Trem(5, 420, 530);
+        trem_f = new Trem(6, 830, 460);
 
-	Trem *trens[2] = { trem1, trem2 };
+        Trem *trens[6] = {trem_a, trem_b, trem_c, trem_d, trem_e, trem_f};
 
         /*
          * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
@@ -19,27 +23,45 @@ MainWindow::MainWindow(QWidget *parent)
          * um outro objeto chamar o sinal UPDATEGUI, não haverá execução da
          * função UPDATEINTERFACE
          */
-        connect(trem1, SIGNAL(updateGUI(int, int, int)),
+        connect(trem_a, SIGNAL(updateGUI(int, int, int)),
                 SLOT(updateInterface(int, int, int)));
-        connect(trem2, SIGNAL(updateGUI(int, int, int)),
+        connect(trem_b, SIGNAL(updateGUI(int, int, int)),
+                SLOT(updateInterface(int, int, int)));
+        connect(trem_c, SIGNAL(updateGUI(int, int, int)),
+                SLOT(updateInterface(int, int, int)));
+        connect(trem_d, SIGNAL(updateGUI(int, int, int)),
+                SLOT(updateInterface(int, int, int)));
+        connect(trem_e, SIGNAL(updateGUI(int, int, int)),
+                SLOT(updateInterface(int, int, int)));
+        connect(trem_f, SIGNAL(updateGUI(int, int, int)),
                 SLOT(updateInterface(int, int, int)));
 
-	for (auto trem : trens) {
-		trem->start();
-	}
+        for (auto trem : trens) {
+                trem->start();
+        }
 }
 
 // Função que será executada quando o sinal UPDATEGUI for emitido
 void MainWindow::updateInterface(int id, int x, int y) {
         switch (id) {
-        case 1: // Atualiza a posição do objeto da tela (quadrado) que
-                // representa o trem1
-                ui->label_trem1->setGeometry(x, y, 21, 17);
+        case 1:
+                ui->label_trem_a->setGeometry(x, y, 20, 20);
                 break;
-        case 2: // Atualiza a posição do objeto da tela (quadrado) que
-                // representa o trem2
-                ui->label_trem2->setGeometry(x, y, 21, 17);
+        case 2:
+                ui->label_trem_b->setGeometry(x, y, 20, 20);
                 break;
+	case 3:
+                ui->label_trem_c->setGeometry(x, y, 20, 20);
+		break;
+	case 4:
+                ui->label_trem_d->setGeometry(x, y, 20, 20);
+		break;
+	case 5:
+                ui->label_trem_e->setGeometry(x, y, 20, 20);
+		break;
+	case 6:
+                ui->label_trem_f->setGeometry(x, y, 20, 20);
+		break;
         default:
                 break;
         }
