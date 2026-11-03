@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "qslider.h"
 #include "trem.h"
 
 namespace Ui {
@@ -30,6 +31,8 @@ private:
     Trem *trem_d;
     Trem *trem_e;
     Trem *trem_f;
+
+    QSlider *slider_a;
 };
 
 #endif // MAINWINDOW_H

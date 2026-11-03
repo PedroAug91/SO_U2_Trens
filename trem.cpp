@@ -6,12 +6,28 @@ Trem::Trem(int ID, int x, int y) {
         this->ID = ID;
         this->x = x;
         this->y = y;
-        velocidade = 100;
+        this->velocidade = 100;
+}
+
+void Trem::updateSpeed(int vel) {
+        if (vel < 0) {
+                this->velocidade = 0;
+                return;
+        } else if (vel > 200) {
+                this->velocidade = 200;
+                return;
+        }
+        this->velocidade = vel;
 }
 
 // Função a ser executada após executar trem->START
 void Trem::run() {
         while (true) {
+                if (velocidade == 0) {
+                        msleep(50);
+                        continue;
+                }
+
                 switch (ID) {
                 case 1: // Trem 1 (trem_label_a)
                         if (y == 140 && x > 150)
@@ -82,6 +98,8 @@ void Trem::run() {
                 default:
                         break;
                 }
-                msleep(velocidade);
+
+                int delay = qMax(1, 200 - velocidade);
+                msleep(delay);
         }
 }

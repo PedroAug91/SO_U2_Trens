@@ -20,6 +20,8 @@ class Trem : public QThread {
         // Cria um sinal
       signals:
         void updateGUI(int, int, int);
+      public slots:
+        void updateSpeed(int);
 
       private:
         int x;          // posição X do trem na tela
